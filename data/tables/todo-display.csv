@@ -1,0 +1,10 @@
+Arm / pool,System-correct,Wrong destructive,False action must-clarify,False action off/unsupported,Executed off-topic,Refusal precision,Refusal recall,Warm p95 ms,Health
+t-base / t-new,156/613,43,0/0,1/40,1,94/409,94/95,1016.1,reference
+t-new-R16-e1 / t-new,596/613,4,0/0,0/40,0,95/103,95/95,938.9,pass
+t-new-R16-e2 / t-new,606/613,1,0/0,0/40,0,95/101,95/95,742.2,pass
+t-new-R16-e3 / t-new,609/613,2,0/0,0/40,0,95/97,95/95,720.1,pass
+t-a8 / t-new,612/613,0,0/0,0/40,0,95/96,95/95,718.8,imported
+t-base / t-repro,147/500,34,0/0,0/26,0,68/280,68/80,984.1,reference
+t-repro-R16-e1 / t-repro,491/500,2,0/0,0/26,0,77/77,77/80,704.4,pass
+t-repro-R16-e2 / t-repro,488/500,0,0/0,0/26,0,80/86,80/80,611.2,pass
+t-repro-R16-e3 / t-repro,497/500,0,0/0,0/26,0,80/80,80/80,655.3,pass

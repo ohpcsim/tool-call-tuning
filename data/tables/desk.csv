@@ -1,0 +1,6 @@
+arm,pool,role,primary_k,primary_n,wrong_destructive,false_actions_must_clarify,must_clarify_n,false_actions_off_topic_unsupported,off_topic_unsupported_n,executed_off_topic,warm_p95_ms,warm_n,health,clarify_recall_k,clarify_recall_n,wrong_mark_proposals
+d-base,desk,reference,73,318,0,0,210,0,0,0,187.7,600,reference,210,210,0
+d-R16-e1,desk,candidate,293,318,0,27,210,0,0,0,222.5,600,pass,183,210,0
+d-R16-e2,desk,candidate,271,318,0,24,210,0,0,0,224.2,600,pass,186,210,0
+d-R16-e3,desk,candidate,253,318,0,5,210,0,0,0,231.6,600,pass,205,210,0
+d-R32-e2,desk,candidate,291,318,0,29,210,0,0,0,223.0,600,pass,181,210,0

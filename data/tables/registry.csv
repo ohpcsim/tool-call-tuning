@@ -1,0 +1,13 @@
+artifact,version,stage,arm,experiment_ref,commit
+desk-model,v0.0.1,experiment,d-R16-e1,refs/exps/f4/cd1b247bcd739ae79d1072d81ccfe7f6777f97/desk-d-R16-e1-a1-val,02c3e03fdd29a5c4b76870fa65b0feeda498d1a3
+desk-model,v0.0.2,experiment,d-R16-e2,refs/exps/f4/cd1b247bcd739ae79d1072d81ccfe7f6777f97/desk-d-R16-e2-s1,f6d4dfa929083a9a0ca3a70dc06fd12389b2e5a4
+desk-model,v0.0.3,experiment,d-R16-e3,refs/exps/f4/cd1b247bcd739ae79d1072d81ccfe7f6777f97/desk-d-R16-e3-s1,7d2e954c2d6b691ea0b4a572c39855da341d9aea
+desk-model,v0.0.4,experiment,d-R32-e2,refs/exps/f4/cd1b247bcd739ae79d1072d81ccfe7f6777f97/desk-d-R32-e2-s1,32e282322e87e6a133f129d0e09297116aeef792
+todo-model,v0.0.1,experiment,t-new-R16-e1,refs/exps/58/a7f8bf5364a1634d322df5f2381b7f8a2e1108/todo-t-new-R16-e1-s1,fc8b4ba6f0498a3e6ead2cde75dc75d2f3f22c45
+todo-model,v0.0.2,experiment,t-new-R16-e2,refs/exps/58/a7f8bf5364a1634d322df5f2381b7f8a2e1108/todo-t-new-R16-e2-s1,efeae1cf4a2c22217d9051859d14fa113367a295
+todo-model,v0.0.3,experiment,t-new-R16-e3,refs/exps/58/a7f8bf5364a1634d322df5f2381b7f8a2e1108/todo-t-new-R16-e3-s1,4e226611fd7c3e8c920cc3a2d43e13d59ef8d40d
+todo-model,v0.0.4,experiment,t-repro-R16-e1,refs/exps/80/3c2196ae895cf7a514ac5df0fbc98625991c83/todo-t-repro-R16-e1-s1,ed23bbb245934aeb3e2427f7121f7c30da6b37cc
+todo-model,v0.0.5,experiment,t-repro-R16-e2,refs/exps/80/3c2196ae895cf7a514ac5df0fbc98625991c83/todo-t-repro-R16-e2-s1,19d4214b1c3d00d88ed98a1e9979c81a34f20b17
+todo-model,v0.0.6,experiment,t-repro-R16-e3,refs/exps/80/3c2196ae895cf7a514ac5df0fbc98625991c83/todo-t-repro-R16-e3-s1,2f7704a84adbf4f2ba90913e0e51af88d4521f1b
+todo-model,v0.0.7,experiment,t-new-R16-e1 (§9 r1),refs/exps/90/b9de578a6c750a73203a31083544f23498ac50/todo-section9-validation-r1,215e37501647bce1871a3e5b151c849645dbe132
+baseline-a8,v0.1.0,experiment,t-a8,(GTO import commit),25d146fc0319c1b367b746254822587fc3bdbfea

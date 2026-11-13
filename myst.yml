@@ -1,0 +1,32 @@
+version: 1
+project:
+  title: "Tuning a small model to call tools"
+  description: The literate-science record of a small tool-call study. Open validation only.
+  exclude:
+    - pipeline/**
+  license:
+    content: CC-BY-4.0
+    code: MIT
+  toc:
+    - file: index.md
+    - title: About the study
+      children:
+        - file: premise.md
+        - file: project.md
+        - file: results.md
+          title: "Literate Science Results"
+    - title: What the study found
+      children:
+        - file: gate.md
+        - file: serving.md
+        - file: sealed-test.md
+        - file: measured.md
+    - title: Reference
+      children:
+        - file: tools.md
+        - file: build.md
+site:
+  template: book-theme
+  options:
+    style: custom.css
+    logo_text: Tool-call tuning

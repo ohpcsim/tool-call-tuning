@@ -1,0 +1,208 @@
+desk:
+  clock: '2026-10-10T15:00:00-04:00'
+  gen:
+    dev_seed: 20261010
+    dev_n: 300
+    train_seed: 7310
+    train_n: 6000
+    val_n: 600
+    val_seed: 7311
+    family_seed: 7310
+    dev:
+      frac:
+        prefixed: 0.4
+        free: 0.35
+        ambiguous: 0.25
+      research_frac: 0.15
+      research_ambiguous_share: 0.2
+      prefixed_tools:
+        send_to: 0.35
+        calendar_request: 0.25
+        decide: 0.15
+        status: 0.1
+        mark: 0.15
+      free_tools:
+        calendar_request: 0.6
+        send_to: 0.13
+        decide: 0.09
+        status: 0.09
+        mark: 0.09
+      ambiguous_kinds:
+        calendar: 0.4
+        send: 0.2
+        decide: 0.15
+        status_mark: 0.1
+        vague: 0.15
+    train:
+      frac:
+        prefixed: 0.0
+        free: 0.65
+        ambiguous: 0.35
+      research_frac: 0.15
+      research_ambiguous_share: 0.2
+      prefixed_tools:
+        send_to: 0.35
+        calendar_request: 0.25
+        decide: 0.15
+        status: 0.1
+        mark: 0.15
+      free_tools:
+        calendar_request: 0.6
+        send_to: 0.13
+        decide: 0.09
+        status: 0.09
+        mark: 0.09
+      ambiguous_kinds:
+        calendar: 0.4
+        send: 0.2
+        decide: 0.15
+        status_mark: 0.1
+        vague: 0.15
+    val:
+      frac:
+        prefixed: 0.0
+        free: 0.65
+        ambiguous: 0.35
+      research_frac: 0.15
+      research_ambiguous_share: 0.2
+      prefixed_tools:
+        send_to: 0.35
+        calendar_request: 0.25
+        decide: 0.15
+        status: 0.1
+        mark: 0.15
+      free_tools:
+        calendar_request: 0.6
+        send_to: 0.13
+        decide: 0.09
+        status: 0.09
+        mark: 0.09
+      ambiguous_kinds:
+        calendar: 0.4
+        send: 0.2
+        decide: 0.15
+        status_mark: 0.1
+        vague: 0.15
+  split:
+    val_n: 600
+    min_val_clarify: 200
+    near_threshold: 0.8
+    min_train_clarify: 0.3
+  eval:
+    url: <redacted>
+    model: functiongemma-270m-it
+    model_revision: 39eccb091651513a5dfb56892d3714c1b5b8276c
+    temperature: 0
+    max_tokens: 128
+    timeout_s: 60
+    thresholds:
+      false_action_max: 0.01
+      exact_min: 0.95
+      warm_p95_ms_max: 500
+      research_success_min: 0.9
+      research_p95_ms_max: 10000
+  train:
+    method: lora
+    rank: 16
+    alpha: 32
+    dropout: 0.0
+    targets:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+    arm_id: d-R16-e1
+    attempt: 1
+    epochs: 1
+    learning_rate: 0.0002
+    batch_size: 4
+    gradient_accumulation_steps: 4
+    max_seq_length: 2048
+    seed: 1
+    data_seed: 7310
+    optimizer: adamw_torch
+    scheduler: cosine
+    warmup_ratio: 0.03
+    precision: bf16
+    lora_precision: fp32
+    loss: target-token-only
+  select:
+    rule: protocol-v1-section-6
+    tolerance: 0.01
+    candidate_arms:
+    - d-R16-e1
+    - d-R16-e2
+    - d-R16-e3
+    - d-R32-e2
+  final_eval:
+    evaluator: <redacted>
+todo:
+  archive:
+    repo: <redacted>
+    rev: c308b7ff485aee88fe00e90e2678759e00a237f0
+  split:
+    seed: 7311
+    validation_group_fraction: 0.1
+    near_threshold: 0.8
+    source_partitions:
+    - train
+    - validation
+  train:
+    method: lora
+    rank: 16
+    alpha: 32
+    dropout: 0.0
+    targets:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+    arm_id: t-new-R16-e1
+    attempt: 1
+    epochs: 1
+    learning_rate: 0.0002
+    batch_size: 4
+    gradient_accumulation_steps: 4
+    max_seq_length: 1024
+    seed: 1
+    data_seed: 7311
+    optimizer: adamw_torch
+    scheduler: cosine
+    warmup_ratio: 0.03
+    precision: bf16
+    lora_precision: fp32
+    loss: target-token-only
+    pool: t-new
+  select:
+    rule: protocol-v1-section-6
+    tolerance: 0.01
+    candidate_arms:
+    - t-new-R16-e1
+    - t-new-R16-e2
+    - t-new-R16-e3
+  eval:
+    split: sealed-test
+    release: DRAFT
+    model_revision: 39eccb091651513a5dfb56892d3714c1b5b8276c
+    temperature: 0
+    max_tokens: 256
+    timeout_s: 60
+    thresholds:
+      exact_min: 0.95
+      false_action_max: 0.01
+    url: <redacted>
+    model: functiongemma-270m-it
+  final_eval:
+    evaluator: <redacted>
+
+# §9 namespace only; does not alter either frozen training recipe.
+reproduction:
+  id: r1
+  original_commit: null # full fetched experiment commit; required only for reproduction
+  original_md5: null # train output MD5 from that experiment lock

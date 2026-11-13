@@ -1,0 +1,746 @@
+vars:
+- ../../params.yaml
+stages:
+  import-a8:
+    wdir: ../..
+    cmd: python -m todo.import_a8 --verify
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/import_a8.py
+    - studies/todo/archive-imports.yaml
+    - data/todo/a8/arm1-e3
+    - models/base
+    - docs/protocol/frontier-rulebook-v1.md
+    - studies/todo/arm1-manifest.json
+    - studies/shared/base-manifest.json
+    - src/desk/base.py
+    params:
+    - todo.archive
+    outs:
+    - data/todo/a8-import-receipt.json
+    frozen: true
+  split:
+    wdir: ../..
+    cmd: python -m todo.split
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/import_a8.py
+    - src/todo/split.py
+    - src/desk/leakcheck.py
+    - data/todo/a8-import-receipt.json
+    - data/todo/a8/arm1-e3
+    - models/base
+    - docs/protocol/frontier-rulebook-v1.md
+    - studies/todo/arm1-manifest.json
+    - studies/shared/base-manifest.json
+    - src/desk/base.py
+    - data/custody/a8-v4-validation.jsonl
+    params:
+    - todo.split
+    outs:
+    - data/todo/t-new/train.jsonl
+    - data/todo/t-new/validation-rows.jsonl
+    - data/todo/t-new/train-requests.jsonl
+    - data/todo/t-new/val.jsonl
+    - data/todo/t-new/requests.jsonl
+    - data/todo/t-new/split-membership.json
+    - data/todo/t-new/split-receipt.json
+    - data/todo/t-repro/train.jsonl
+    - data/todo/t-repro/validation-rows.jsonl
+    - data/todo/t-repro/train-requests.jsonl
+    - data/todo/t-repro/val.jsonl
+    - data/todo/t-repro/requests.jsonl
+    - data/todo/t-repro/split-membership.json
+    - data/todo/t-repro/split-receipt.json
+    - data/todo/a8-train.jsonl
+    - data/todo/a8-val.jsonl
+    - data/todo/dev-corpus.jsonl
+  leakcheck:
+    wdir: ../..
+    cmd: python -m todo.leakcheck
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/split.py
+    - src/todo/leakcheck.py
+    - src/desk/leakcheck.py
+    - data/todo/t-new/train-requests.jsonl
+    - data/todo/t-new/val.jsonl
+    - data/todo/t-new/split-receipt.json
+    - docs/protocol/frontier-rulebook-v1.md
+    params:
+    - todo.split.near_threshold
+    outs:
+    - data/todo/leakcheck.json
+  environment:
+    wdir: ../..
+    cmd: python -m desk.environment --config configs/launcher.yaml --out data/todo/env.json
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/desk/environment.py
+    - docs/protocol/frontier-rulebook-v1.md
+    outs:
+    - data/todo/env.json:
+        cache: true
+  exec-check-t-new:
+    wdir: ../..
+    cmd: python -m todo.exec_check --pool t-new
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/exec_check.py
+    - src/todo/split.py
+    - data/todo/t-new/val.jsonl
+    - data/todo/t-new/split-receipt.json
+    - docs/protocol/frontier-rulebook-v1.md
+    outs:
+    - data/todo/t-new/exec-check.json
+  exec-check-t-repro:
+    wdir: ../..
+    cmd: python -m todo.exec_check --pool t-repro
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/exec_check.py
+    - src/todo/split.py
+    - data/todo/t-repro/val.jsonl
+    - data/todo/t-repro/split-receipt.json
+    - docs/protocol/frontier-rulebook-v1.md
+    outs:
+    - data/todo/t-repro/exec-check.json
+  train:
+    wdir: ../..
+    cmd: python -m todo.train --params params.yaml --launcher configs/launcher.yaml
+    deps:
+    - src/desk/reproduction.py
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/train.py
+    - src/todo/lora.py
+    - src/todo/split.py
+    - src/todo/import_a8.py
+    - src/desk/train.py
+    - src/desk/attempts.py
+    - src/desk/lora.py
+    - src/desk/attestation.py
+    - docs/trainer-provenance.json
+    - data/todo/a8-import-receipt.json
+    - data/todo/leakcheck.json
+    - data/todo/env.json
+    - data/todo/dev-corpus.jsonl
+    - data/todo/a8-train.jsonl
+    - data/todo/a8-val.jsonl
+    - data/todo/a8/arm1-e3
+    - models/base
+    - data/todo/${todo.train.pool}/train.jsonl
+    - data/todo/${todo.train.pool}/validation-rows.jsonl
+    - data/todo/${todo.train.pool}/train-requests.jsonl
+    - data/todo/${todo.train.pool}/val.jsonl
+    - data/todo/${todo.train.pool}/requests.jsonl
+    - data/todo/${todo.train.pool}/split-membership.json
+    - data/todo/${todo.train.pool}/split-receipt.json
+    - attestations/todo-${todo.train.pool}-heldout-gate.json
+    - attestations/todo-gpre.json
+    - docs/protocol/frontier-rulebook-v1.md
+    - studies/todo/arm1-manifest.json
+    - studies/shared/base-manifest.json
+    - src/desk/base.py
+    - envs/train/pyproject.toml
+    - envs/train/uv.lock
+    - studies/todo/seal.json
+    - studies/custody-corpora.json
+    - data/custody/a8-arm2-train.jsonl
+    - data/custody/a8-v4-validation.jsonl
+    - data/custody/desk-dev-v0.jsonl
+    - src/desk/protocol.py
+    params:
+    - todo.train
+    - todo.archive
+    - todo.split
+    outs:
+    - models/todo-runs/${todo.train.arm_id}-a${todo.train.attempt}
+    - data/todo/train-env/${todo.train.arm_id}-a${todo.train.attempt}.json:
+        cache: true
+  val-eval:
+    wdir: ../..
+    cmd: python -m todo.val_eval --params params.yaml
+    deps:
+    - src/desk/reproduction.py
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/train.py
+    - src/todo/lora.py
+    - src/todo/split.py
+    - src/todo/import_a8.py
+    - src/desk/train.py
+    - src/desk/lora.py
+    - src/desk/attestation.py
+    - docs/trainer-provenance.json
+    - data/todo/a8-import-receipt.json
+    - data/todo/leakcheck.json
+    - data/todo/env.json
+    - data/todo/dev-corpus.jsonl
+    - data/todo/a8-train.jsonl
+    - data/todo/a8-val.jsonl
+    - data/todo/a8/arm1-e3
+    - models/base
+    - data/todo/${todo.train.pool}/train.jsonl
+    - data/todo/${todo.train.pool}/validation-rows.jsonl
+    - data/todo/${todo.train.pool}/train-requests.jsonl
+    - data/todo/${todo.train.pool}/val.jsonl
+    - data/todo/${todo.train.pool}/requests.jsonl
+    - data/todo/${todo.train.pool}/split-membership.json
+    - data/todo/${todo.train.pool}/split-receipt.json
+    - attestations/todo-${todo.train.pool}-heldout-gate.json
+    - attestations/todo-gpre.json
+    - src/todo/val_eval.py
+    - src/todo/exec_check.py
+    - src/desk/val_eval.py
+    - data/todo/${todo.train.pool}/exec-check.json
+    - models/todo-runs/${todo.train.arm_id}-a${todo.train.attempt}
+    - docs/protocol/frontier-rulebook-v1.md
+    - studies/todo/arm1-manifest.json
+    - studies/shared/base-manifest.json
+    - src/desk/base.py
+    - envs/train/pyproject.toml
+    - envs/train/uv.lock
+    - studies/todo/seal.json
+    - studies/custody-corpora.json
+    - data/custody/a8-arm2-train.jsonl
+    - data/custody/a8-v4-validation.jsonl
+    - data/custody/desk-dev-v0.jsonl
+    - src/desk/protocol.py
+    params:
+    - todo.train
+    - todo.eval
+    outs:
+    - data/todo/val-runs/${todo.train.pool}/${todo.train.arm_id}-a${todo.train.attempt}
+    - data/todo/${todo.train.pool}/validation-runs/${todo.train.arm_id}.json
+  val-reference:
+    wdir: ../..
+    cmd: python -m todo.val_eval --reference
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/train.py
+    - src/todo/lora.py
+    - src/todo/split.py
+    - src/todo/import_a8.py
+    - src/desk/train.py
+    - src/desk/lora.py
+    - src/desk/attestation.py
+    - docs/trainer-provenance.json
+    - data/todo/a8-import-receipt.json
+    - data/todo/leakcheck.json
+    - data/todo/env.json
+    - data/todo/dev-corpus.jsonl
+    - data/todo/a8-train.jsonl
+    - data/todo/a8-val.jsonl
+    - data/todo/a8/arm1-e3
+    - models/base
+    - data/todo/${todo.train.pool}/train.jsonl
+    - data/todo/${todo.train.pool}/validation-rows.jsonl
+    - data/todo/${todo.train.pool}/train-requests.jsonl
+    - data/todo/${todo.train.pool}/val.jsonl
+    - data/todo/${todo.train.pool}/requests.jsonl
+    - data/todo/${todo.train.pool}/split-membership.json
+    - data/todo/${todo.train.pool}/split-receipt.json
+    - attestations/todo-${todo.train.pool}-heldout-gate.json
+    - attestations/todo-gpre.json
+    - src/todo/val_eval.py
+    - src/todo/exec_check.py
+    - src/desk/val_eval.py
+    - data/todo/${todo.train.pool}/exec-check.json
+    - docs/protocol/frontier-rulebook-v1.md
+    - studies/todo/arm1-manifest.json
+    - studies/shared/base-manifest.json
+    - src/desk/base.py
+    - envs/train/pyproject.toml
+    - envs/train/uv.lock
+    - studies/todo/seal.json
+    - studies/custody-corpora.json
+    - data/custody/a8-arm2-train.jsonl
+    - data/custody/a8-v4-validation.jsonl
+    - data/custody/desk-dev-v0.jsonl
+    - src/desk/protocol.py
+    params:
+    - todo.train
+    - todo.eval
+    outs:
+    - data/todo/val-runs/${todo.train.pool}/t-base-a${todo.train.attempt}
+    - data/todo/${todo.train.pool}/validation-runs/reference.json
+  val-a8:
+    wdir: ../..
+    cmd: python -m todo.val_eval --a8
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/train.py
+    - src/todo/lora.py
+    - src/todo/split.py
+    - src/todo/import_a8.py
+    - src/desk/train.py
+    - src/desk/lora.py
+    - src/desk/attestation.py
+    - docs/trainer-provenance.json
+    - data/todo/a8-import-receipt.json
+    - data/todo/leakcheck.json
+    - data/todo/env.json
+    - data/todo/dev-corpus.jsonl
+    - data/todo/a8-train.jsonl
+    - data/todo/a8-val.jsonl
+    - data/todo/a8/arm1-e3
+    - models/base
+    - data/todo/${todo.train.pool}/train.jsonl
+    - data/todo/${todo.train.pool}/validation-rows.jsonl
+    - data/todo/${todo.train.pool}/train-requests.jsonl
+    - data/todo/${todo.train.pool}/val.jsonl
+    - data/todo/${todo.train.pool}/requests.jsonl
+    - data/todo/${todo.train.pool}/split-membership.json
+    - data/todo/${todo.train.pool}/split-receipt.json
+    - attestations/todo-${todo.train.pool}-heldout-gate.json
+    - attestations/todo-gpre.json
+    - src/todo/val_eval.py
+    - src/todo/exec_check.py
+    - src/desk/val_eval.py
+    - data/todo/${todo.train.pool}/exec-check.json
+    - docs/protocol/frontier-rulebook-v1.md
+    - studies/todo/arm1-manifest.json
+    - studies/shared/base-manifest.json
+    - src/desk/base.py
+    - envs/train/pyproject.toml
+    - envs/train/uv.lock
+    - studies/todo/seal.json
+    - studies/custody-corpora.json
+    - data/custody/a8-arm2-train.jsonl
+    - data/custody/a8-v4-validation.jsonl
+    - data/custody/desk-dev-v0.jsonl
+    - src/desk/protocol.py
+    params:
+    - todo.train
+    - todo.eval
+    outs:
+    - data/todo/val-runs/${todo.train.pool}/t-a8-a${todo.train.attempt}
+    - data/todo/${todo.train.pool}/controls/t-a8.json
+  select:
+    wdir: ../..
+    cmd: python -m todo.select --params params.yaml
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/select.py
+    - src/desk/select.py
+    - data/todo/t-new/val.jsonl
+    - data/todo/t-new/validation-runs/reference.json
+    - data/todo/t-new/validation-runs/t-new-R16-e1.json
+    - data/todo/t-new/validation-runs/t-new-R16-e2.json
+    - data/todo/t-new/validation-runs/t-new-R16-e3.json
+    - data/todo/t-repro/validation-runs/t-repro-R16-e1.json
+    - data/todo/t-repro/validation-runs/t-repro-R16-e2.json
+    - data/todo/t-repro/validation-runs/t-repro-R16-e3.json
+    - data/todo/t-repro/validation-runs/reference.json
+    - data/todo/t-new/controls/t-a8.json
+    - docs/protocol/frontier-rulebook-v1.md
+    params:
+    - todo.select
+    outs:
+    - data/todo/selected.json
+  final-eval:
+    wdir: ../..
+    cmd: python -m todo.final_eval --evaluator ${todo.final_eval.evaluator}
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - docs/protocol/frontier-rulebook-v1.md
+    - src/desk/scorer.py
+    - src/desk/release.py
+    - src/desk/final_eval.py
+    - src/desk/final_report.py
+    - src/desk/descriptive.py
+    - src/desk/statistics.py
+    - src/desk/attestation.py
+    - src/desk/protocol.py
+    - src/desk/eval.py
+    - src/desk/parser.py
+    - src/desk/normalize.py
+    - src/desk/registry.py
+    - src/todo/final_eval.py
+    - src/todo/report.py
+    - src/todo/common.py
+    - src/todo/val_eval.py
+    - src/todo/import_a8.py
+    - studies/todo/a8-system
+    - studies/todo/arm1-manifest.json
+    - studies/todo/archive-imports.yaml
+    - params.yaml
+    - studies/todo/seal.json
+    - studies/todo/test-release.json
+    - data/todo/selected.json
+    - models/todo-runs
+    - data/todo/a8/arm1-e3/frozen
+    - models/base/functiongemma-270m-it
+    - data/todo/sealed-test.jsonl
+    - data/todo/released-outputs
+    params:
+    - todo.final_eval
+    outs:
+    - data/todo/final-eval
+  report:
+    wdir: ../..
+    cmd: python -m todo.report
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - docs/protocol/frontier-rulebook-v1.md
+    - src/desk/scorer.py
+    - src/desk/release.py
+    - src/desk/final_eval.py
+    - src/desk/final_report.py
+    - src/desk/descriptive.py
+    - src/desk/statistics.py
+    - src/desk/attestation.py
+    - src/desk/protocol.py
+    - src/desk/eval.py
+    - src/desk/parser.py
+    - src/desk/normalize.py
+    - src/desk/registry.py
+    - src/todo/final_eval.py
+    - src/todo/report.py
+    - src/todo/common.py
+    - src/todo/val_eval.py
+    - src/todo/import_a8.py
+    - studies/todo/a8-system
+    - studies/todo/arm1-manifest.json
+    - studies/todo/archive-imports.yaml
+    - data/todo/final-eval
+    metrics:
+    - metrics/todo-eval.json:
+        cache: false
+  report-leakcheck:
+    wdir: ../..
+    cmd: python -m desk.leakreport --input data/todo/leakcheck.json --out metrics/todo-leakcheck.json
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/desk/leakreport.py
+    - data/todo/leakcheck.json
+    - docs/protocol/frontier-rulebook-v1.md
+    metrics:
+    - metrics/todo-leakcheck.json:
+        cache: false
+  frontier-report:
+    wdir: ../..
+    cmd: python -m desk.descriptive frontier --study todo --evaluator ${todo.final_eval.evaluator}
+      --release studies/todo/test-release.json --seal studies/todo/seal.json --selection
+      data/todo/selected.json --test data/todo/sealed-test.jsonl --outputs data/todo/descriptive-outputs/frontier/index.json
+      --work data/todo/descriptive/frontier --out metrics/todo-frontier.json
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - docs/protocol/frontier-rulebook-v1.md
+    - src/desk/scorer.py
+    - src/desk/release.py
+    - src/desk/final_eval.py
+    - src/desk/final_report.py
+    - src/desk/descriptive.py
+    - src/desk/statistics.py
+    - src/desk/attestation.py
+    - src/desk/protocol.py
+    - src/desk/eval.py
+    - src/desk/parser.py
+    - src/desk/normalize.py
+    - src/desk/registry.py
+    - src/todo/final_eval.py
+    - src/todo/report.py
+    - src/todo/common.py
+    - src/todo/val_eval.py
+    - src/todo/import_a8.py
+    - studies/todo/a8-system
+    - studies/todo/arm1-manifest.json
+    - studies/todo/archive-imports.yaml
+    - params.yaml
+    - studies/todo/seal.json
+    - studies/todo/test-release.json
+    - data/todo/selected.json
+    - models/todo-runs
+    - data/todo/a8/arm1-e3/frozen
+    - models/base/functiongemma-270m-it
+    - data/todo/sealed-test.jsonl
+    - data/todo/descriptive-outputs/frontier
+    params:
+    - todo.final_eval
+    outs:
+    - data/todo/descriptive/frontier
+    metrics:
+    - metrics/todo-frontier.json:
+        cache: false
+  family-report:
+    wdir: ../..
+    cmd: python -m desk.descriptive family --study todo --evaluator ${todo.final_eval.evaluator}
+      --release studies/todo/test-release.json --seal studies/todo/seal.json --selection
+      data/todo/selected.json --test data/todo/sealed-test.jsonl --outputs data/todo/descriptive-outputs/family/index.json
+      --work data/todo/descriptive/family --out metrics/todo-family.json --cross-release
+      studies/todo/cross-family-release.json --cross-seal studies/todo/cross-family-seal.json
+      --cross-test data/todo/cross-family-test.jsonl --cross-outputs data/todo/descriptive-outputs/cross/index.json
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - docs/protocol/frontier-rulebook-v1.md
+    - src/desk/scorer.py
+    - src/desk/release.py
+    - src/desk/final_eval.py
+    - src/desk/final_report.py
+    - src/desk/descriptive.py
+    - src/desk/statistics.py
+    - src/desk/attestation.py
+    - src/desk/protocol.py
+    - src/desk/eval.py
+    - src/desk/parser.py
+    - src/desk/normalize.py
+    - src/desk/registry.py
+    - src/todo/final_eval.py
+    - src/todo/report.py
+    - src/todo/common.py
+    - src/todo/val_eval.py
+    - src/todo/import_a8.py
+    - studies/todo/a8-system
+    - studies/todo/arm1-manifest.json
+    - studies/todo/archive-imports.yaml
+    - params.yaml
+    - studies/todo/seal.json
+    - studies/todo/test-release.json
+    - data/todo/selected.json
+    - models/todo-runs
+    - data/todo/a8/arm1-e3/frozen
+    - models/base/functiongemma-270m-it
+    - data/todo/sealed-test.jsonl
+    - data/todo/descriptive-outputs/family
+    - studies/todo/cross-family-release.json
+    - studies/todo/cross-family-seal.json
+    - data/todo/cross-family-test.jsonl
+    - data/todo/descriptive-outputs/cross
+    params:
+    - todo.final_eval
+    outs:
+    - data/todo/descriptive/family
+    metrics:
+    - metrics/todo-family.json:
+        cache: false
+  reproduction-train:
+    wdir: ../..
+    cmd: env PYTHONDONTWRITEBYTECODE=1 python -m todo.train --params params.yaml --launcher
+      configs/launcher.yaml --reproduction ${reproduction.id}
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/train.py
+    - src/todo/lora.py
+    - src/todo/split.py
+    - src/todo/import_a8.py
+    - src/desk/train.py
+    - src/desk/attempts.py
+    - src/desk/lora.py
+    - src/desk/attestation.py
+    - docs/trainer-provenance.json
+    - data/todo/a8-import-receipt.json
+    - data/todo/leakcheck.json
+    - data/todo/env.json
+    - data/todo/dev-corpus.jsonl
+    - data/todo/a8-train.jsonl
+    - data/todo/a8-val.jsonl
+    - data/todo/a8/arm1-e3
+    - models/base
+    - data/todo/${todo.train.pool}/train.jsonl
+    - data/todo/${todo.train.pool}/validation-rows.jsonl
+    - data/todo/${todo.train.pool}/train-requests.jsonl
+    - data/todo/${todo.train.pool}/val.jsonl
+    - data/todo/${todo.train.pool}/requests.jsonl
+    - data/todo/${todo.train.pool}/split-membership.json
+    - data/todo/${todo.train.pool}/split-receipt.json
+    - attestations/todo-${todo.train.pool}-heldout-gate.json
+    - attestations/todo-gpre.json
+    - docs/protocol/frontier-rulebook-v1.md
+    - studies/todo/arm1-manifest.json
+    - studies/shared/base-manifest.json
+    - src/desk/base.py
+    - envs/train/pyproject.toml
+    - envs/train/uv.lock
+    - studies/todo/seal.json
+    - studies/custody-corpora.json
+    - data/custody/a8-arm2-train.jsonl
+    - data/custody/a8-v4-validation.jsonl
+    - data/custody/desk-dev-v0.jsonl
+    - src/desk/protocol.py
+    - src/desk/reproduction.py
+    - models/todo-runs/reproduction/originals/${todo.train.arm_id}-a${todo.train.attempt}
+    params:
+    - todo.train
+    - todo.archive
+    - todo.split
+    - reproduction.id
+    - reproduction.original_commit
+    - reproduction.original_md5
+    outs:
+    - models/todo-runs/reproduction/${todo.train.arm_id}-a${todo.train.attempt}-${reproduction.id}
+    - data/todo/train-env/reproduction/${todo.train.arm_id}-a${todo.train.attempt}-${reproduction.id}.json:
+        cache: true
+  reproduction-val:
+    wdir: ../..
+    cmd: env PYTHONDONTWRITEBYTECODE=1 python -m todo.reproduce_val --params params.yaml
+      --reproduction ${reproduction.id}
+    deps:
+    - pyproject.toml
+    - uv.lock
+    - configs/launcher.yaml
+    - docs/protocol/protocol-v1.md
+    - src/desk/scorer.py
+    - src/todo/common.py
+    - studies/todo/a8-system
+    - src/todo/train.py
+    - src/todo/lora.py
+    - src/todo/split.py
+    - src/todo/import_a8.py
+    - src/desk/train.py
+    - src/desk/lora.py
+    - src/desk/attestation.py
+    - docs/trainer-provenance.json
+    - data/todo/a8-import-receipt.json
+    - data/todo/leakcheck.json
+    - data/todo/env.json
+    - data/todo/dev-corpus.jsonl
+    - data/todo/a8-train.jsonl
+    - data/todo/a8-val.jsonl
+    - data/todo/a8/arm1-e3
+    - models/base
+    - data/todo/${todo.train.pool}/train.jsonl
+    - data/todo/${todo.train.pool}/validation-rows.jsonl
+    - data/todo/${todo.train.pool}/train-requests.jsonl
+    - data/todo/${todo.train.pool}/val.jsonl
+    - data/todo/${todo.train.pool}/requests.jsonl
+    - data/todo/${todo.train.pool}/split-membership.json
+    - data/todo/${todo.train.pool}/split-receipt.json
+    - attestations/todo-${todo.train.pool}-heldout-gate.json
+    - attestations/todo-gpre.json
+    - src/todo/val_eval.py
+    - src/todo/exec_check.py
+    - src/desk/val_eval.py
+    - data/todo/${todo.train.pool}/exec-check.json
+    - models/todo-runs/reproduction/${todo.train.arm_id}-a${todo.train.attempt}-${reproduction.id}
+    - docs/protocol/frontier-rulebook-v1.md
+    - studies/todo/arm1-manifest.json
+    - studies/shared/base-manifest.json
+    - src/desk/base.py
+    - envs/train/pyproject.toml
+    - envs/train/uv.lock
+    - studies/todo/seal.json
+    - studies/custody-corpora.json
+    - data/custody/a8-arm2-train.jsonl
+    - data/custody/a8-v4-validation.jsonl
+    - data/custody/desk-dev-v0.jsonl
+    - src/desk/protocol.py
+    - src/desk/reproduction.py
+    - models/todo-runs/reproduction/originals/${todo.train.arm_id}-a${todo.train.attempt}
+    - src/todo/reproduce_val.py
+    params:
+    - todo.train
+    - todo.eval
+    - reproduction.id
+    - reproduction.original_commit
+    - reproduction.original_md5
+    outs:
+    - data/todo/val-runs/reproduction/${todo.train.arm_id}-a${todo.train.attempt}-${reproduction.id}
+artifacts:
+  todo-model:
+    type: model
+    path: models/todo-runs/${todo.train.arm_id}-a${todo.train.attempt}/adapter
+    desc: todo LoRA arm adapter (tracked for every arm; promotion only after safety gates)
+    meta:
+      base: functiongemma-270m-it@39eccb091651513a5dfb56892d3714c1b5b8276c
+      adapter: null
+      data_version: A8 arm-1, group re-split seed 7311; see split receipt
+      dvc_lock_sha256: null
+  baseline-a8:
+    type: model
+    path: data/todo/a8/arm1-e3/frozen
+    desc: baseline-a8 (reconstructed)
+    meta:
+      base: functiongemma-270m-it@39eccb091651513a5dfb56892d3714c1b5b8276c
+      adapter: 0ffeb33a80cd322ed623ec650555d2f13b91fc6642321ced1aec2e659ca232e9
+      data_version: A8 arm-1 v4; source commit 35ef48603a03fb5222c143ecc31b6d6df653b224
+      dvc_lock_sha256: 47ce2d64454d17c30e1ea9fb29116fb90ee6f9e73705bea001893ea44be960bd

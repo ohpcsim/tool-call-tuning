@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="972" viewBox="0 0 1320 972" role="img" aria-labelledby="title desc">
+<title id="title">Experiment lineage and registry</title>
+<desc id="desc">Working benchmark: open validation only; not held-out; no confirmatory claim</desc>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif">
+<text x="24" y="28" font-size="20" fill="#222" text-anchor="start">Experiment lineage and registry</text>
+<text x="24" y="53" font-size="14" fill="#222" text-anchor="start">Working benchmark: open validation only; not held-out; no confirmatory claim</text>
+<text x="24" y="88" font-size="14" fill="#222" text-anchor="start">Arm → experiment ref (full ref in CSV) → select record / control → GTO experiment version</text>
+<text x="24" y="122" font-size="13" fill="#222" text-anchor="start">d-R16-e1</text>
+<text x="250" y="122" font-size="12" fill="#222" text-anchor="start">desk-d-R16-e1-a1-val</text>
+<text x="250" y="140" font-size="11" fill="#555" text-anchor="start">02c3e03fdd29a5c4b76870fa65b0feeda498d1a3</text>
+<text x="650" y="122" font-size="12" fill="#222" text-anchor="start">desk: SHA256 076abf61…</text>
+<text x="975" y="122" font-size="13" fill="#0072B2" text-anchor="start">desk-model@v0.0.1</text>
+<path d="M220,118 H240 M620,118 H640 M945,118 H965" stroke="#555"/>
+<text x="24" y="179" font-size="13" fill="#222" text-anchor="start">d-R16-e2</text>
+<text x="250" y="179" font-size="12" fill="#222" text-anchor="start">desk-d-R16-e2-s1</text>
+<text x="250" y="197" font-size="11" fill="#555" text-anchor="start">f6d4dfa929083a9a0ca3a70dc06fd12389b2e5a4</text>
+<text x="650" y="179" font-size="12" fill="#222" text-anchor="start">desk: SHA256 076abf61…</text>
+<text x="975" y="179" font-size="13" fill="#0072B2" text-anchor="start">desk-model@v0.0.2</text>
+<path d="M220,175 H240 M620,175 H640 M945,175 H965" stroke="#555"/>
+<text x="24" y="236" font-size="13" fill="#222" text-anchor="start">d-R16-e3</text>
+<text x="250" y="236" font-size="12" fill="#222" text-anchor="start">desk-d-R16-e3-s1</text>
+<text x="250" y="254" font-size="11" fill="#555" text-anchor="start">7d2e954c2d6b691ea0b4a572c39855da341d9aea</text>
+<text x="650" y="236" font-size="12" fill="#222" text-anchor="start">desk: SHA256 076abf61…</text>
+<text x="975" y="236" font-size="13" fill="#0072B2" text-anchor="start">desk-model@v0.0.3</text>
+<path d="M220,232 H240 M620,232 H640 M945,232 H965" stroke="#555"/>
+<text x="24" y="293" font-size="13" fill="#222" text-anchor="start">d-R32-e2</text>
+<text x="250" y="293" font-size="12" fill="#222" text-anchor="start">desk-d-R32-e2-s1</text>
+<text x="250" y="311" font-size="11" fill="#555" text-anchor="start">32e282322e87e6a133f129d0e09297116aeef792</text>
+<text x="650" y="293" font-size="12" fill="#222" text-anchor="start">desk: SHA256 076abf61…</text>
+<text x="975" y="293" font-size="13" fill="#0072B2" text-anchor="start">desk-model@v0.0.4</text>
+<path d="M220,289 H240 M620,289 H640 M945,289 H965" stroke="#555"/>
+<text x="24" y="350" font-size="13" fill="#222" text-anchor="start">t-new-R16-e1</text>
+<text x="250" y="350" font-size="12" fill="#222" text-anchor="start">todo-t-new-R16-e1-s1</text>
+<text x="250" y="368" font-size="11" fill="#555" text-anchor="start">fc8b4ba6f0498a3e6ead2cde75dc75d2f3f22c45</text>
+<text x="650" y="350" font-size="12" fill="#222" text-anchor="start">todo: MD5 e131cce4…</text>
+<text x="975" y="350" font-size="13" fill="#0072B2" text-anchor="start">todo-model@v0.0.1</text>
+<path d="M220,346 H240 M620,346 H640 M945,346 H965" stroke="#555"/>
+<text x="24" y="407" font-size="13" fill="#222" text-anchor="start">t-new-R16-e2</text>
+<text x="250" y="407" font-size="12" fill="#222" text-anchor="start">todo-t-new-R16-e2-s1</text>
+<text x="250" y="425" font-size="11" fill="#555" text-anchor="start">efeae1cf4a2c22217d9051859d14fa113367a295</text>
+<text x="650" y="407" font-size="12" fill="#222" text-anchor="start">todo: MD5 e131cce4…</text>
+<text x="975" y="407" font-size="13" fill="#0072B2" text-anchor="start">todo-model@v0.0.2</text>
+<path d="M220,403 H240 M620,403 H640 M945,403 H965" stroke="#555"/>
+<text x="24" y="464" font-size="13" fill="#222" text-anchor="start">t-new-R16-e3</text>
+<text x="250" y="464" font-size="12" fill="#222" text-anchor="start">todo-t-new-R16-e3-s1</text>
+<text x="250" y="482" font-size="11" fill="#555" text-anchor="start">4e226611fd7c3e8c920cc3a2d43e13d59ef8d40d</text>
+<text x="650" y="464" font-size="12" fill="#222" text-anchor="start">todo: MD5 e131cce4…</text>
+<text x="975" y="464" font-size="13" fill="#0072B2" text-anchor="start">todo-model@v0.0.3</text>
+<path d="M220,460 H240 M620,460 H640 M945,460 H965" stroke="#555"/>
+<text x="24" y="521" font-size="13" fill="#222" text-anchor="start">t-repro-R16-e1</text>
+<text x="250" y="521" font-size="12" fill="#222" text-anchor="start">todo-t-repro-R16-e1-s1</text>
+<text x="250" y="539" font-size="11" fill="#555" text-anchor="start">ed23bbb245934aeb3e2427f7121f7c30da6b37cc</text>
+<text x="650" y="521" font-size="12" fill="#222" text-anchor="start">descriptive control; outside selection</text>
+<text x="975" y="521" font-size="13" fill="#0072B2" text-anchor="start">todo-model@v0.0.4</text>
+<path d="M220,517 H240 M620,517 H640 M945,517 H965" stroke="#555"/>
+<text x="24" y="578" font-size="13" fill="#222" text-anchor="start">t-repro-R16-e2</text>
+<text x="250" y="578" font-size="12" fill="#222" text-anchor="start">todo-t-repro-R16-e2-s1</text>
+<text x="250" y="596" font-size="11" fill="#555" text-anchor="start">19d4214b1c3d00d88ed98a1e9979c81a34f20b17</text>
+<text x="650" y="578" font-size="12" fill="#222" text-anchor="start">descriptive control; outside selection</text>
+<text x="975" y="578" font-size="13" fill="#0072B2" text-anchor="start">todo-model@v0.0.5</text>
+<path d="M220,574 H240 M620,574 H640 M945,574 H965" stroke="#555"/>
+<text x="24" y="635" font-size="13" fill="#222" text-anchor="start">t-repro-R16-e3</text>
+<text x="250" y="635" font-size="12" fill="#222" text-anchor="start">todo-t-repro-R16-e3-s1</text>
+<text x="250" y="653" font-size="11" fill="#555" text-anchor="start">2f7704a84adbf4f2ba90913e0e51af88d4521f1b</text>
+<text x="650" y="635" font-size="12" fill="#222" text-anchor="start">descriptive control; outside selection</text>
+<text x="975" y="635" font-size="13" fill="#0072B2" text-anchor="start">todo-model@v0.0.6</text>
+<path d="M220,631 H240 M620,631 H640 M945,631 H965" stroke="#555"/>
+<text x="24" y="692" font-size="13" fill="#222" text-anchor="start">t-new-R16-e1 (§9 r1)</text>
+<text x="250" y="692" font-size="12" fill="#222" text-anchor="start">todo-section9-validation-r1</text>
+<text x="250" y="710" font-size="11" fill="#555" text-anchor="start">215e37501647bce1871a3e5b151c849645dbe132</text>
+<text x="650" y="692" font-size="12" fill="#222" text-anchor="start">descriptive control; outside selection</text>
+<text x="975" y="692" font-size="13" fill="#0072B2" text-anchor="start">todo-model@v0.0.7</text>
+<path d="M220,688 H240 M620,688 H640 M945,688 H965" stroke="#555"/>
+<text x="24" y="749" font-size="13" fill="#222" text-anchor="start">t-a8</text>
+<text x="250" y="749" font-size="12" fill="#222" text-anchor="start">(GTO import commit)</text>
+<text x="250" y="767" font-size="11" fill="#555" text-anchor="start">25d146fc0319c1b367b746254822587fc3bdbfea</text>
+<text x="650" y="749" font-size="12" fill="#222" text-anchor="start">descriptive control; outside selection</text>
+<text x="975" y="749" font-size="13" fill="#0072B2" text-anchor="start">baseline-a8@v0.1.0</text>
+<path d="M220,745 H240 M620,745 H640 M945,745 H965" stroke="#555"/>
+<text x="24" y="806" font-size="13" fill="#222" text-anchor="start">§9 r1 training</text>
+<text x="250" y="806" font-size="12" fill="#222" text-anchor="start">todo-section9-r1</text>
+<text x="250" y="824" font-size="11" fill="#555" text-anchor="start">19856bf210925cb1403cc50d36ee5d75493bfeb9</text>
+<text x="650" y="806" font-size="12" fill="#222" text-anchor="start">outside selection; §9 diagnostic</text>
+<text x="975" y="806" font-size="13" fill="#0072B2" text-anchor="start">none</text>
+<path d="M220,802 H240 M620,802 H640 M945,802 H965" stroke="#555"/>
+<text x="24" y="863" font-size="13" fill="#222" text-anchor="start">§9 same-weights control</text>
+<text x="250" y="863" font-size="12" fill="#222" text-anchor="start">todo-section9-validation-r1-control</text>
+<text x="250" y="881" font-size="11" fill="#555" text-anchor="start">11815a40c47f5cec21b25010bd94329ce6f5a2cc</text>
+<text x="650" y="863" font-size="12" fill="#222" text-anchor="start">outside selection; §9 diagnostic</text>
+<text x="975" y="863" font-size="13" fill="#0072B2" text-anchor="start">none</text>
+<path d="M220,859 H240 M620,859 H640 M945,859 H965" stroke="#555"/>
+<text x="24" y="949" font-size="14" fill="#222" text-anchor="start">Neither candidate pool selected an arm. Controls and §9 r1 never enter selection. Nothing was promoted.</text>
+</g>
+</svg>

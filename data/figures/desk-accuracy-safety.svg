@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="552" viewBox="0 0 1150 552" role="img" aria-labelledby="title desc">
+<title id="title">Desk: accuracy versus safety</title>
+<desc id="desc">Working benchmark: open validation only; not held-out; no confirmatory claim</desc>
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif">
+<text x="24" y="28" font-size="20" fill="#222" text-anchor="start">Desk: accuracy versus safety</text>
+<text x="24" y="53" font-size="14" fill="#222" text-anchor="start">Working benchmark: open validation only; not held-out; no confirmatory claim</text>
+<rect x="85" y="437" width="745" height="6" fill="#CCEECC"/>
+<text x="85" y="86" font-size="13" fill="#222" text-anchor="start">Shaded: zero-count gate only; all §6 gates still required</text>
+<path d="M85,115 V440 H830" stroke="#555" fill="none"/>
+<path d="M85.0,115 V440" stroke="#ddd"/>
+<text x="85.0" y="464" font-size="12" fill="#222" text-anchor="middle">0</text>
+<path d="M234.0,115 V440" stroke="#ddd"/>
+<text x="234.0" y="464" font-size="12" fill="#222" text-anchor="middle">20</text>
+<path d="M383.0,115 V440" stroke="#ddd"/>
+<text x="383.0" y="464" font-size="12" fill="#222" text-anchor="middle">40</text>
+<path d="M532.0,115 V440" stroke="#ddd"/>
+<text x="532.0" y="464" font-size="12" fill="#222" text-anchor="middle">60</text>
+<path d="M681.0,115 V440" stroke="#ddd"/>
+<text x="681.0" y="464" font-size="12" fill="#222" text-anchor="middle">80</text>
+<path d="M830.0,115 V440" stroke="#ddd"/>
+<text x="830.0" y="464" font-size="12" fill="#222" text-anchor="middle">100</text>
+<text x="73" y="444.0" font-size="12" fill="#222" text-anchor="end">0</text>
+<text x="73" y="432.79" font-size="12" fill="#222" text-anchor="end">1</text>
+<text x="73" y="287.1" font-size="12" fill="#222" text-anchor="end">14</text>
+<text x="73" y="119.0" font-size="12" fill="#222" text-anchor="end">29</text>
+<path d="M766.745,115.000 L850,115" fill="none" stroke="#0072B2"/>
+<circle cx="766.745" cy="115.000" r="5" fill="#0072B2" stroke="white"/>
+<text x="860" y="119" font-size="13" fill="#0072B2" text-anchor="start">d-R32-e2</text>
+<path d="M771.431,137.414 L850,147" fill="none" stroke="#0072B2"/>
+<circle cx="771.431" cy="137.414" r="5" fill="#0072B2" stroke="white"/>
+<text x="860" y="151" font-size="13" fill="#0072B2" text-anchor="start">d-R16-e1</text>
+<path d="M719.890,171.034 L850,179" fill="none" stroke="#0072B2"/>
+<circle cx="719.890" cy="171.034" r="5" fill="#0072B2" stroke="white"/>
+<text x="860" y="183" font-size="13" fill="#0072B2" text-anchor="start">d-R16-e2</text>
+<path d="M677.720,383.966 L850,211" fill="none" stroke="#0072B2"/>
+<circle cx="677.720" cy="383.966" r="5" fill="#0072B2" stroke="white"/>
+<text x="860" y="215" font-size="13" fill="#0072B2" text-anchor="start">d-R16-e3</text>
+<path d="M256.022,440.000 L850,243" fill="none" stroke="#555555"/>
+<circle cx="256.022" cy="440.000" r="5" fill="#555555" stroke="white"/>
+<text x="860" y="247" font-size="13" fill="#555555" text-anchor="start">d-base</text>
+<text x="450" y="494" font-size="15" fill="#222" text-anchor="middle">Primary accuracy (%)</text>
+<text x="24" y="102" font-size="14" fill="#222" text-anchor="start">Count: false actions /210</text>
+<text x="24" y="530" font-size="13" fill="#222" text-anchor="start">Blue: candidates; orange: descriptive controls; grey: base references. Direct labels identify every arm.</text>
+</g>
+</svg>

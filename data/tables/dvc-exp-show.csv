@@ -1,0 +1,15 @@
+study,arm,pool,commit,experiment_ref,primary,wrong_destructive,false_action_must_clarify,false_action_off_unsupported,executed_off_topic,warm_p95_ms,health
+desk,d-base,desk,historical select input,historical select input,73/318,0,0,0,0,187.7,reference
+desk,d-R16-e1,desk,02c3e03fdd29a5c4b76870fa65b0feeda498d1a3,refs/exps/f4/cd1b247bcd739ae79d1072d81ccfe7f6777f97/desk-d-R16-e1-a1-val,293/318,0,27,0,0,222.5,pass
+desk,d-R16-e2,desk,f6d4dfa929083a9a0ca3a70dc06fd12389b2e5a4,refs/exps/f4/cd1b247bcd739ae79d1072d81ccfe7f6777f97/desk-d-R16-e2-s1,271/318,0,24,0,0,224.2,pass
+desk,d-R16-e3,desk,7d2e954c2d6b691ea0b4a572c39855da341d9aea,refs/exps/f4/cd1b247bcd739ae79d1072d81ccfe7f6777f97/desk-d-R16-e3-s1,253/318,0,5,0,0,231.6,pass
+desk,d-R32-e2,desk,32e282322e87e6a133f129d0e09297116aeef792,refs/exps/f4/cd1b247bcd739ae79d1072d81ccfe7f6777f97/desk-d-R32-e2-s1,291/318,0,29,0,0,223.0,pass
+todo,t-base,t-new,43d15e95a875482fb98fb6515bfb1abc5401ae84,refs/exps/56/0696b1aebccc41f800b36c566fefa027bb699f/todo-select-v1-no-eligible,156/613,43,0,1,1,1016.1,reference
+todo,t-new-R16-e1,t-new,fc8b4ba6f0498a3e6ead2cde75dc75d2f3f22c45,refs/exps/58/a7f8bf5364a1634d322df5f2381b7f8a2e1108/todo-t-new-R16-e1-s1,596/613,4,0,0,0,938.9,pass
+todo,t-new-R16-e2,t-new,efeae1cf4a2c22217d9051859d14fa113367a295,refs/exps/58/a7f8bf5364a1634d322df5f2381b7f8a2e1108/todo-t-new-R16-e2-s1,606/613,1,0,0,0,742.2,pass
+todo,t-new-R16-e3,t-new,4e226611fd7c3e8c920cc3a2d43e13d59ef8d40d,refs/exps/58/a7f8bf5364a1634d322df5f2381b7f8a2e1108/todo-t-new-R16-e3-s1,609/613,2,0,0,0,720.1,pass
+todo,t-a8,t-new,43d15e95a875482fb98fb6515bfb1abc5401ae84,refs/exps/56/0696b1aebccc41f800b36c566fefa027bb699f/todo-select-v1-no-eligible,612/613,0,0,0,0,718.8,imported
+todo,t-base,t-repro,43d15e95a875482fb98fb6515bfb1abc5401ae84,refs/exps/56/0696b1aebccc41f800b36c566fefa027bb699f/todo-select-v1-no-eligible,147/500,34,0,0,0,984.1,reference
+todo,t-repro-R16-e1,t-repro,ed23bbb245934aeb3e2427f7121f7c30da6b37cc,refs/exps/80/3c2196ae895cf7a514ac5df0fbc98625991c83/todo-t-repro-R16-e1-s1,491/500,2,0,0,0,704.4,pass
+todo,t-repro-R16-e2,t-repro,19d4214b1c3d00d88ed98a1e9979c81a34f20b17,refs/exps/80/3c2196ae895cf7a514ac5df0fbc98625991c83/todo-t-repro-R16-e2-s1,488/500,0,0,0,0,611.2,pass
+todo,t-repro-R16-e3,t-repro,2f7704a84adbf4f2ba90913e0e51af88d4521f1b,refs/exps/80/3c2196ae895cf7a514ac5df0fbc98625991c83/todo-t-repro-R16-e3-s1,497/500,0,0,0,0,655.3,pass

@@ -1,0 +1,6 @@
+_build/
+.venv/
+_source-clone/
+__pycache__/
+.ipynb_checkpoints/
+private-names.txt

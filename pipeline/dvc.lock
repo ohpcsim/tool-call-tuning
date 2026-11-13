@@ -1,0 +1,512 @@
+schema: '2.0'
+stages:
+  split:
+    cmd: python -m todo.split
+    deps:
+    - path: configs/launcher.yaml
+      hash: md5
+      md5: f6425355a44a8b08400944c3a0ddf677
+      size: 410
+    - path: data/custody/a8-v4-validation.jsonl
+      hash: md5
+      md5: 38404224017a0ab2b1a6d60906ae1835
+      size: 95660
+    - path: data/todo/a8-import-receipt.json
+      hash: md5
+      md5: 70976ec0e412471e0b8a47b382f5da36
+      size: 3595
+    - path: data/todo/a8/arm1-e3
+      hash: md5
+      md5: b00d5ce06e1ef05b339a6644e3497ce9.dir
+      size: 137081431
+      nfiles: 19
+    - path: docs/protocol/frontier-rulebook-v1.md
+      hash: md5
+      md5: 6ab496bc8324d17f7e4b6ea53838dc28
+      size: 1945
+    - path: docs/protocol/protocol-v1.md
+      hash: md5
+      md5: 7da4044f8c03c68c3a4f6b6dee0550d3
+      size: 20285
+    - path: models/base
+      hash: md5
+      md5: 45874aafc748e839fd348e7cdf2a8ce7.dir
+      size: 855126724
+      nfiles: 20
+    - path: pyproject.toml
+      hash: md5
+      md5: 8f202b1e76462dfeecbc8d40519930c9
+      size: 622
+    - path: src/desk/base.py
+      hash: md5
+      md5: 0fbb6c0429133dd334020ca160ec5632
+      size: 666
+    - path: src/desk/leakcheck.py
+      hash: md5
+      md5: 55ffa3e9a2a000f11d4d826d2eb3055c
+      size: 4965
+    - path: src/desk/scorer.py
+      hash: md5
+      md5: a369f316bed047c6d269f48eadc21986
+      size: 6596
+    - path: src/todo/common.py
+      hash: md5
+      md5: 90d4364881fd44faa09a8e68a1d17405
+      size: 1997
+    - path: src/todo/import_a8.py
+      hash: md5
+      md5: 8c35e2405b771124b6b5824266f24474
+      size: 8987
+    - path: src/todo/split.py
+      hash: md5
+      md5: ae1d15fe4a5ccf87043e934c7a063d47
+      size: 8226
+    - path: studies/shared/base-manifest.json
+      hash: md5
+      md5: 3d3b9bb0156099181d10ad250f192a38
+      size: 4070
+    - path: studies/todo/a8-system
+      hash: md5
+      md5: 4886e00ef39351c87f05e0edade775ff.dir
+      size: 210165
+      nfiles: 31
+    - path: studies/todo/arm1-manifest.json
+      hash: md5
+      md5: d66a7bcf59b88f6c8645be5c73d52d36
+      size: 4924
+    - path: uv.lock
+      hash: md5
+      md5: a8e8184edb78b62e28d92eeb299af243
+      size: 171504
+    params:
+      params.yaml:
+        todo.split:
+          seed: 7311
+          validation_group_fraction: 0.1
+          near_threshold: 0.8
+          source_partitions:
+          - train
+          - validation
+    outs:
+    - path: data/todo/a8-train.jsonl
+      hash: md5
+      md5: 925fdde54383f724cecc04ccea87f9b0
+      size: 11535428
+    - path: data/todo/a8-val.jsonl
+      hash: md5
+      md5: 38404224017a0ab2b1a6d60906ae1835
+      size: 95660
+    - path: data/todo/dev-corpus.jsonl
+      hash: md5
+      md5: 8201761353725cf67dd07228f0d9aff3
+      size: 7985009
+    - path: data/todo/t-new/requests.jsonl
+      hash: md5
+      md5: 3ee4eb14253a25b92c1bd7bf644f92bd
+      size: 7573416
+    - path: data/todo/t-new/split-membership.json
+      hash: md5
+      md5: 742b360d6eee03a1c2e4317f5a11485d
+      size: 994377
+    - path: data/todo/t-new/split-receipt.json
+      hash: md5
+      md5: a770858bf083c4ec7a9c44fedd350178
+      size: 1668
+    - path: data/todo/t-new/train-requests.jsonl
+      hash: md5
+      md5: ab5ba9156a2d9df6f982d3921edfebef
+      size: 6804766
+    - path: data/todo/t-new/train.jsonl
+      hash: md5
+      md5: 3c2ae3551854e11492ac5296c1c83226
+      size: 11199322
+    - path: data/todo/t-new/val.jsonl
+      hash: md5
+      md5: 3626b2cdacad6ec197d7f75a7d060e11
+      size: 768650
+    - path: data/todo/t-new/validation-rows.jsonl
+      hash: md5
+      md5: bae68e472412b61f851938879c83bff7
+      size: 1219441
+    - path: data/todo/t-repro/requests.jsonl
+      hash: md5
+      md5: 0fb37c0ce30e45c91f2654c92c90dd24
+      size: 8170515
+    - path: data/todo/t-repro/split-membership.json
+      hash: md5
+      md5: 9fe1935ca05599165503201ff98dbd68
+      size: 1164028
+    - path: data/todo/t-repro/split-receipt.json
+      hash: md5
+      md5: fcf2a123bc63833a6593e084990f0c60
+      size: 1620
+    - path: data/todo/t-repro/train-requests.jsonl
+      hash: md5
+      md5: 371c6845b5ec4110aa742daa80c4dbbc
+      size: 7570351
+    - path: data/todo/t-repro/train.jsonl
+      hash: md5
+      md5: 925fdde54383f724cecc04ccea87f9b0
+      size: 11535428
+    - path: data/todo/t-repro/val.jsonl
+      hash: md5
+      md5: 7325599b11e83b7bd8e6904e2444973e
+      size: 600164
+    - path: data/todo/t-repro/validation-rows.jsonl
+      hash: md5
+      md5: 4f16891236a9804eed02a8561e2a0832
+      size: 910070
+  leakcheck:
+    cmd: python -m todo.leakcheck
+    deps:
+    - path: configs/launcher.yaml
+      hash: md5
+      md5: f6425355a44a8b08400944c3a0ddf677
+      size: 410
+    - path: data/todo/t-new/split-receipt.json
+      hash: md5
+      md5: a770858bf083c4ec7a9c44fedd350178
+      size: 1668
+    - path: data/todo/t-new/train-requests.jsonl
+      hash: md5
+      md5: ab5ba9156a2d9df6f982d3921edfebef
+      size: 6804766
+    - path: data/todo/t-new/val.jsonl
+      hash: md5
+      md5: 3626b2cdacad6ec197d7f75a7d060e11
+      size: 768650
+    - path: docs/protocol/frontier-rulebook-v1.md
+      hash: md5
+      md5: 6ab496bc8324d17f7e4b6ea53838dc28
+      size: 1945
+    - path: docs/protocol/protocol-v1.md
+      hash: md5
+      md5: 7da4044f8c03c68c3a4f6b6dee0550d3
+      size: 20285
+    - path: pyproject.toml
+      hash: md5
+      md5: 8f202b1e76462dfeecbc8d40519930c9
+      size: 622
+    - path: src/desk/leakcheck.py
+      hash: md5
+      md5: 55ffa3e9a2a000f11d4d826d2eb3055c
+      size: 4965
+    - path: src/desk/scorer.py
+      hash: md5
+      md5: 574a91f4fde5c9c536bf007af1112238
+      size: 5462
+    - path: src/todo/common.py
+      hash: md5
+      md5: 90d4364881fd44faa09a8e68a1d17405
+      size: 1997
+    - path: src/todo/leakcheck.py
+      hash: md5
+      md5: 48c5d2fa7cfc4d4b5279eed1fe5ba74d
+      size: 1116
+    - path: src/todo/split.py
+      hash: md5
+      md5: ae1d15fe4a5ccf87043e934c7a063d47
+      size: 8226
+    - path: studies/todo/a8-system
+      hash: md5
+      md5: 4886e00ef39351c87f05e0edade775ff.dir
+      size: 210165
+      nfiles: 31
+    - path: uv.lock
+      hash: md5
+      md5: a8e8184edb78b62e28d92eeb299af243
+      size: 171504
+    params:
+      params.yaml:
+        todo.split.near_threshold: 0.8
+    outs:
+    - path: data/todo/leakcheck.json
+      hash: md5
+      md5: 0aaaa8c41fc10d81072f6d30e3bed986
+      size: 701
+  report-leakcheck:
+    cmd: python -m desk.leakreport --input data/todo/leakcheck.json --out 
+      metrics/todo-leakcheck.json
+    deps:
+    - path: configs/launcher.yaml
+      hash: md5
+      md5: f6425355a44a8b08400944c3a0ddf677
+      size: 410
+    - path: data/todo/leakcheck.json
+      hash: md5
+      md5: 0aaaa8c41fc10d81072f6d30e3bed986
+      size: 701
+    - path: docs/protocol/frontier-rulebook-v1.md
+      hash: md5
+      md5: 6ab496bc8324d17f7e4b6ea53838dc28
+      size: 1945
+    - path: docs/protocol/protocol-v1.md
+      hash: md5
+      md5: 7da4044f8c03c68c3a4f6b6dee0550d3
+      size: 20285
+    - path: pyproject.toml
+      hash: md5
+      md5: 8f202b1e76462dfeecbc8d40519930c9
+      size: 622
+    - path: src/desk/leakreport.py
+      hash: md5
+      md5: def6e0e0d54bbe2d0eea6871b1ae0e5c
+      size: 532
+    - path: src/desk/scorer.py
+      hash: md5
+      md5: 574a91f4fde5c9c536bf007af1112238
+      size: 5462
+    - path: src/todo/common.py
+      hash: md5
+      md5: 90d4364881fd44faa09a8e68a1d17405
+      size: 1997
+    - path: studies/todo/a8-system
+      hash: md5
+      md5: 4886e00ef39351c87f05e0edade775ff.dir
+      size: 210165
+      nfiles: 31
+    - path: uv.lock
+      hash: md5
+      md5: a8e8184edb78b62e28d92eeb299af243
+      size: 171504
+    outs:
+    - path: metrics/todo-leakcheck.json
+      hash: md5
+      md5: 0aaaa8c41fc10d81072f6d30e3bed986
+      size: 701
+  environment:
+    cmd: python -m desk.environment --config configs/launcher.yaml --out 
+      data/todo/env.json
+    deps:
+    - path: configs/launcher.yaml
+      hash: md5
+      md5: f6425355a44a8b08400944c3a0ddf677
+      size: 410
+    - path: docs/protocol/frontier-rulebook-v1.md
+      hash: md5
+      md5: 6ab496bc8324d17f7e4b6ea53838dc28
+      size: 1945
+    - path: docs/protocol/protocol-v1.md
+      hash: md5
+      md5: 7da4044f8c03c68c3a4f6b6dee0550d3
+      size: 20285
+    - path: pyproject.toml
+      hash: md5
+      md5: 8f202b1e76462dfeecbc8d40519930c9
+      size: 622
+    - path: src/desk/environment.py
+      hash: md5
+      md5: 2c49c6f7a9290bdca1736a4a67f69500
+      size: 1898
+    - path: src/desk/scorer.py
+      hash: md5
+      md5: a369f316bed047c6d269f48eadc21986
+      size: 6596
+    - path: src/todo/common.py
+      hash: md5
+      md5: 90d4364881fd44faa09a8e68a1d17405
+      size: 1997
+    - path: studies/todo/a8-system
+      hash: md5
+      md5: 4886e00ef39351c87f05e0edade775ff.dir
+      size: 210165
+      nfiles: 31
+    - path: uv.lock
+      hash: md5
+      md5: a8e8184edb78b62e28d92eeb299af243
+      size: 171504
+    outs:
+    - path: data/todo/env.json
+      hash: md5
+      md5: 1ee0f8e9378da6dc80e5424859d41d69
+      size: 734
+  import-a8:
+    cmd: python -m todo.import_a8 --verify
+    deps:
+    - path: configs/launcher.yaml
+      hash: md5
+      md5: f6425355a44a8b08400944c3a0ddf677
+      size: 410
+    - path: data/todo/a8/arm1-e3
+      hash: md5
+      md5: b00d5ce06e1ef05b339a6644e3497ce9.dir
+      size: 137081431
+      nfiles: 19
+    - path: docs/protocol/frontier-rulebook-v1.md
+      hash: md5
+      md5: 6ab496bc8324d17f7e4b6ea53838dc28
+      size: 1945
+    - path: docs/protocol/protocol-v1.md
+      hash: md5
+      md5: 7da4044f8c03c68c3a4f6b6dee0550d3
+      size: 20285
+    - path: models/base
+      hash: md5
+      md5: 45874aafc748e839fd348e7cdf2a8ce7.dir
+      size: 855126724
+      nfiles: 20
+    - path: pyproject.toml
+      hash: md5
+      md5: 8f202b1e76462dfeecbc8d40519930c9
+      size: 622
+    - path: src/desk/base.py
+      hash: md5
+      md5: 0fbb6c0429133dd334020ca160ec5632
+      size: 666
+    - path: src/desk/scorer.py
+      hash: md5
+      md5: a369f316bed047c6d269f48eadc21986
+      size: 6596
+    - path: src/todo/common.py
+      hash: md5
+      md5: 90d4364881fd44faa09a8e68a1d17405
+      size: 1997
+    - path: src/todo/import_a8.py
+      hash: md5
+      md5: 8c35e2405b771124b6b5824266f24474
+      size: 8987
+    - path: studies/shared/base-manifest.json
+      hash: md5
+      md5: 3d3b9bb0156099181d10ad250f192a38
+      size: 4070
+    - path: studies/todo/a8-system
+      hash: md5
+      md5: 4886e00ef39351c87f05e0edade775ff.dir
+      size: 210165
+      nfiles: 31
+    - path: studies/todo/archive-imports.yaml
+      hash: md5
+      md5: e47c688b5f9a169d24da84684842c13b
+      size: 473
+    - path: studies/todo/arm1-manifest.json
+      hash: md5
+      md5: d66a7bcf59b88f6c8645be5c73d52d36
+      size: 4924
+    - path: uv.lock
+      hash: md5
+      md5: a8e8184edb78b62e28d92eeb299af243
+      size: 171504
+    params:
+      params.yaml:
+        todo.archive:
+          repo: <redacted>
+          rev: c308b7ff485aee88fe00e90e2678759e00a237f0
+    outs:
+    - path: data/todo/a8-import-receipt.json
+      hash: md5
+      md5: 70976ec0e412471e0b8a47b382f5da36
+      size: 3595
+  exec-check-t-new:
+    cmd: python -m todo.exec_check --pool t-new
+    deps:
+    - path: configs/launcher.yaml
+      hash: md5
+      md5: f6425355a44a8b08400944c3a0ddf677
+      size: 410
+    - path: data/todo/t-new/split-receipt.json
+      hash: md5
+      md5: a770858bf083c4ec7a9c44fedd350178
+      size: 1668
+    - path: data/todo/t-new/val.jsonl
+      hash: md5
+      md5: 3626b2cdacad6ec197d7f75a7d060e11
+      size: 768650
+    - path: docs/protocol/frontier-rulebook-v1.md
+      hash: md5
+      md5: 6ab496bc8324d17f7e4b6ea53838dc28
+      size: 1945
+    - path: docs/protocol/protocol-v1.md
+      hash: md5
+      md5: 7da4044f8c03c68c3a4f6b6dee0550d3
+      size: 20285
+    - path: pyproject.toml
+      hash: md5
+      md5: 8f202b1e76462dfeecbc8d40519930c9
+      size: 622
+    - path: src/desk/scorer.py
+      hash: md5
+      md5: 574a91f4fde5c9c536bf007af1112238
+      size: 5462
+    - path: src/todo/common.py
+      hash: md5
+      md5: 90d4364881fd44faa09a8e68a1d17405
+      size: 1997
+    - path: src/todo/exec_check.py
+      hash: md5
+      md5: eae3086d9e90d821af9b00e9260f9254
+      size: 3287
+    - path: src/todo/split.py
+      hash: md5
+      md5: ae1d15fe4a5ccf87043e934c7a063d47
+      size: 8226
+    - path: studies/todo/a8-system
+      hash: md5
+      md5: 4886e00ef39351c87f05e0edade775ff.dir
+      size: 210165
+      nfiles: 31
+    - path: uv.lock
+      hash: md5
+      md5: a8e8184edb78b62e28d92eeb299af243
+      size: 171504
+    outs:
+    - path: data/todo/t-new/exec-check.json
+      hash: md5
+      md5: bdd23c606082a743770125ec5b94973b
+      size: 36997
+  exec-check-t-repro:
+    cmd: python -m todo.exec_check --pool t-repro
+    deps:
+    - path: configs/launcher.yaml
+      hash: md5
+      md5: f6425355a44a8b08400944c3a0ddf677
+      size: 410
+    - path: data/todo/t-repro/split-receipt.json
+      hash: md5
+      md5: fcf2a123bc63833a6593e084990f0c60
+      size: 1620
+    - path: data/todo/t-repro/val.jsonl
+      hash: md5
+      md5: 7325599b11e83b7bd8e6904e2444973e
+      size: 600164
+    - path: docs/protocol/frontier-rulebook-v1.md
+      hash: md5
+      md5: 6ab496bc8324d17f7e4b6ea53838dc28
+      size: 1945
+    - path: docs/protocol/protocol-v1.md
+      hash: md5
+      md5: 7da4044f8c03c68c3a4f6b6dee0550d3
+      size: 20285
+    - path: pyproject.toml
+      hash: md5
+      md5: 8f202b1e76462dfeecbc8d40519930c9
+      size: 622
+    - path: src/desk/scorer.py
+      hash: md5
+      md5: 574a91f4fde5c9c536bf007af1112238
+      size: 5462
+    - path: src/todo/common.py
+      hash: md5
+      md5: 90d4364881fd44faa09a8e68a1d17405
+      size: 1997
+    - path: src/todo/exec_check.py
+      hash: md5
+      md5: eae3086d9e90d821af9b00e9260f9254
+      size: 3287
+    - path: src/todo/split.py
+      hash: md5
+      md5: ae1d15fe4a5ccf87043e934c7a063d47
+      size: 8226
+    - path: studies/todo/a8-system
+      hash: md5
+      md5: 4886e00ef39351c87f05e0edade775ff.dir
+      size: 210165
+      nfiles: 31
+    - path: uv.lock
+      hash: md5
+      md5: a8e8184edb78b62e28d92eeb299af243
+      size: 171504
+    outs:
+    - path: data/todo/t-repro/exec-check.json
+      hash: md5
+      md5: 2d9ef28ae4d880952a2c6b520edb6e4d
+      size: 30744
